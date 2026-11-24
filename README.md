@@ -1,54 +1,36 @@
-# Language Trainer
+Language Trainer: funcionalidades clave
 
-Videojuego web para estimular los componentes del lenguaje en niños de 7 a 9 años (tercero de primaria).
+¿Qué es?
 
-## Comandos
+Un videojuego web para niños de 7 a 9 años (tercero de primaria) que estimula los componentes del lenguaje: forma, contenido y uso.
 
-```bash
-npm install
-npm run dev      # desarrollo
-npm run build    # compilación para Netlify
-```
+Actividades
 
-## Reglas del juego
+4 juegos, uno por subcomponente: fonético-fonológico, morfo-sintáctico, léxico-semántico y pragmático.
+5 niveles por juego, con dificultad progresiva.
+Boss final (La Gran Página) que mezcla los cuatro juegos. Se abre al completarlos o cuando el docente lo desbloquea.
+Los juegos se pueden empezar en cualquier orden.
 
-- Los cuatro juegos están siempre abiertos y se pueden jugar en cualquier orden.
-- Dentro de cada juego, las 5 páginas (niveles) se abren de una en una (`LEVELS_ARE_SEQUENTIAL` en `src/data/structure.ts`).
-- El boss (La Gran Página) se abre al completar los cuatro juegos o desde el Panel del docente.
-- Sin errores visibles, sin vidas y sin cronómetro por defecto.
+Pensado para no frustrar
 
-## Estructura de los juegos
+Sin errores visibles, sin vidas y sin cronómetro: una respuesta equivocada solo vuelve a su sitio.
+Pistas escalonadas con Señor Loro, el compañero de aventura.
+Modo "con ayuda extra" en cada juego, para niños con dificultades.
+Contenido variado en cada partida: bancos de unos 50 ítems por juego, sin repetir lo reciente.
 
-- `src/data/<juego>/`: bancos de contenido (palabras, oraciones, pares, situaciones…) y `levels.ts`, que genera
-  los 5 ejercicios de cada página según el nivel y el modo (normal o con ayuda extra), sin repetir lo reciente.
-- `src/components/exercises/`: los cuatro motores de ejercicio (elegir, contar, ordenar/completar, clasificar)
-  y `LevelRunner`, que reparte pistas escalonadas y nunca muestra errores.
-- `src/components/common/GameShell.tsx`: recorrido común reglas → páginas → ejercicios.
-- Para ampliar un banco, agregar ítems al archivo de datos; no hace falta tocar los componentes.
+Interacción
 
-## Diseño
+Solo con el mouse: clic o arrastrar, con una varita mágica como cursor.
+Audio con la voz del navegador en español latino. Se puede reemplazar por grabaciones reales sin tocar código.
 
-- Un libro de tela abierto sobre un escritorio de luz suave (`src/layouts/BookLayout.tsx`). En pantallas anchas
-  son dos hojas (portada + índice; en los juegos, Señor Loro a la izquierda y la actividad a la derecha). Desde
-  920 px hacia abajo es una sola hoja y Señor Loro pasa a una barra pegada abajo.
-- Los colores y tintes de cada capítulo viven como variables en `src/index.css`. El verde azulado (`--accent`)
-  se reserva solo para lo que se puede tocar; lo decorativo usa tonos neutros.
-- Los emblemas de capítulo son SVG propios (`src/components/common/ChapterEmblem.tsx`).
-- Se respeta `prefers-reduced-motion`: sin él, solo hay un fundido corto al cambiar de página y un halo al acertar.
+Para el docente
 
-## Imágenes
+Panel del docente: perfil de grupo o niño, volumen y velocidad de voz, tamaño de letra, modo fijo, temporizador opcional y desbloqueo del boss.
+Progreso visible en cada juego y guardado en el navegador, con botón para borrarlo (pide confirmación).
+Lista de audios pendientes para grabar voces reales.
 
-Las imágenes son emojis suavizados (`src/components/exercises/Picture.tsx`). Para reemplazar alguna por un SVG
-propio, cambiar solo ese componente.
+Diseño y tecnología
 
-## Audio
-
-Para reemplazar la voz del navegador por una grabación real, guardar el archivo en `public/audio/`:
-
-- Palabra suelta: `public/audio/pala.mp3`
-- Frase: `public/audio/frases/el-ninyo-juega-en-el-parque.mp3`
-- Reglas de cada juego: `public/audio/frases/reglas-phonology.mp3` (y `morphosyntax`, `lexicon`, `pragmatics`, `boss`)
-
-El Panel del docente tiene la lista completa de audios pendientes con el nombre exacto de cada archivo.
-
-La `ñ` se escribe `ny` en el nombre del archivo (`año` → `anyo.mp3`).
+Libro mágico con colores neutros para no distraer.
+Adaptable a computador, tablet y celular.
+Hecho con React, TypeScript y CSS puro. Sin servidor, desplegable en GitHub y Netlify.
