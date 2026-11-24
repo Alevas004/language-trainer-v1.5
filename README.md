@@ -52,7 +52,3 @@ Para reemplazar la voz del navegador por una grabación real, guardar el archivo
 El Panel del docente tiene la lista completa de audios pendientes con el nombre exacto de cada archivo.
 
 La `ñ` se escribe `ny` en el nombre del archivo (`año` → `anyo.mp3`).
-
-## Despliegue
-
-Subir a GitHub y conectar el repositorio a Netlify (build: `npm run build`, publicar: `dist`).
