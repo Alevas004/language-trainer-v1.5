@@ -1,0 +1,124 @@
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.options-pictures {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 170px), 1fr));
+}
+
+.options-sentences {
+  flex-direction: column;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.option .speak-btn {
+  width: 44px;
+  height: 44px;
+}
+
+.options-sentences .option {
+  width: 100%;
+}
+
+.option-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 118px;
+  padding: 14px 18px;
+  background: #fffdf9;
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 0 rgb(79 127 134 / 0.28);
+  transition: background-color 0.15s, transform 0.08s;
+}
+
+.options-words .option-main {
+  flex: none;
+  min-width: 110px;
+  min-height: var(--target-min);
+  padding: 10px 22px;
+}
+
+.options-sentences .option-main {
+  flex: 1;
+  align-items: flex-start;
+  min-height: var(--target-min);
+  padding: 14px 20px;
+  text-align: left;
+}
+
+.option-main:hover:not(:disabled) {
+  background: var(--accent-soft);
+}
+
+.option-main:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+.option-main:disabled {
+  opacity: 0.45;
+}
+
+.option-right {
+  background: var(--done-soft);
+  border-color: var(--done);
+  animation: halo 0.9s ease-out;
+}
+
+/* Un halo suave al acertar (una sola vez) */
+@keyframes halo {
+  from {
+    box-shadow: 0 0 0 0 rgb(126 156 134 / 0.65);
+  }
+  to {
+    box-shadow: 0 0 0 16px rgb(126 156 134 / 0);
+  }
+}
+
+.option-text {
+  font-size: calc(clamp(1.05rem, 3.6vw, 1.25rem) * var(--text-scale));
+  font-weight: 700;
+}
+
+.options-sentences .option-text {
+  font-weight: 400;
+  font-size: var(--fs-base);
+}
+
+@media (max-width: 600px) {
+  .options-pictures {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .options-pictures .option {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .options-pictures .option .speak-btn {
+    width: 100%;
+    height: 40px;
+    border-radius: 12px;
+  }
+
+  .options-pictures .option-main {
+    min-height: 104px;
+  }
+}

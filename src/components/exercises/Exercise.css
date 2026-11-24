@@ -1,0 +1,161 @@
+.exercise {
+  display: grid;
+  gap: 22px;
+}
+
+.exercise-instruction {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.exercise-instruction p {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: clamp(1.15rem, 3.6vw, 1.45rem);
+  line-height: 1.35;
+}
+
+.stimulus {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 20px;
+  background: var(--page-shade);
+  border-radius: var(--radius);
+}
+
+.stimulus-sentence {
+  margin: 0;
+  font-size: calc(clamp(1.2rem, 4.4vw, 1.5rem) * var(--text-scale));
+}
+
+.blank {
+  display: inline-block;
+  min-width: 3.2em;
+  padding: 0 8px;
+  text-align: center;
+  border-bottom: 3px dashed var(--slate);
+}
+
+.blank-filled {
+  border-bottom-style: solid;
+  border-color: var(--done);
+  background: var(--done-soft);
+  font-weight: 700;
+}
+
+.speaker-panel {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 16px;
+}
+
+.speaker-who {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  font-size: var(--fs-small);
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+.speaker-faces {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
+  font-size: 2.6rem;
+  filter: saturate(0.6);
+}
+
+.speaker-faces .face {
+  font-size: 1.8rem;
+}
+
+.speaker-line {
+  margin: 0;
+  font-size: calc(1.3rem * var(--text-scale));
+}
+
+.speaker-tone {
+  display: block;
+  margin-top: 2px;
+  font-size: var(--fs-small);
+  color: var(--ink-soft);
+}
+
+.speaker-reply {
+  margin: 0;
+  padding: 10px 14px;
+  background: var(--page);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-small);
+}
+
+/* Pieza que vuelve a su sitio: movimiento suave, sin rojo ni sonido */
+@keyframes settle {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+  100% { transform: translateX(0); }
+}
+
+.settle {
+  animation: settle 0.35s ease-in-out;
+}
+
+.draggable {
+  touch-action: none;
+  user-select: none;
+}
+
+.drag-ghost {
+  position: fixed;
+  z-index: 900;
+  pointer-events: none;
+  transform: translate(-50%, -60%) rotate(-3deg);
+  opacity: 0.92;
+  box-shadow: var(--shadow);
+}
+
+.sound-btn {
+  min-height: var(--target-min);
+  padding: 10px 22px;
+  background: var(--accent-soft);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius-small);
+  font-weight: 700;
+}
+
+.sound-btn:hover {
+  background: #cfe0e2;
+}
+
+.exercise-instruction .speak-btn {
+  width: 48px;
+  height: 48px;
+}
+
+@media (max-width: 600px) {
+  .exercise {
+    gap: 16px;
+  }
+
+  .stimulus {
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .speaker-panel {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .sound-btn {
+    width: 100%;
+  }
+}

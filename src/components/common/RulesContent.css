@@ -1,0 +1,41 @@
+.rules-intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.rules-intro p {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: var(--fs-heading);
+  line-height: 1.35;
+}
+
+.rules ul {
+  display: grid;
+  gap: 10px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Cada regla lleva una estrellita; no son pasos, así que no se numeran */
+.rules li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--page-shade);
+  border-radius: 10px;
+}
+
+.rules li::before {
+  content: "";
+  flex: none;
+  width: 14px;
+  height: 14px;
+  margin-top: 0.4em;
+  background: var(--slate);
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+}

@@ -1,0 +1,75 @@
+.runner {
+  display: grid;
+  gap: 24px;
+}
+
+.runner-top {
+  display: grid;
+  gap: 10px;
+}
+
+.runner-progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.runner-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--slate);
+}
+
+.runner-dot-now {
+  border-color: var(--accent);
+}
+
+.runner-dot-done {
+  background: var(--done);
+  border-color: var(--done);
+}
+
+.runner-count {
+  margin-left: 6px;
+  font-size: var(--fs-small);
+  color: var(--ink-soft);
+}
+
+.runner-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Temporizador opcional: solo marca el ritmo; al terminar ofrece una pista */
+@keyframes timer-drain {
+  from { width: 100%; }
+  to { width: 0; }
+}
+
+.timer {
+  height: 8px;
+  background: var(--page-shade);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.timer-fill {
+  height: 100%;
+  background: var(--slate);
+  animation-name: timer-drain;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@media (max-width: 600px) {
+  .runner {
+    gap: 18px;
+  }
+
+  .runner-actions .btn-primary {
+    flex: 1;
+  }
+}

@@ -1,0 +1,162 @@
+.template {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 10px;
+  min-height: 84px;
+  padding: 16px 18px;
+  background: var(--page);
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.template-cards {
+  gap: 16px;
+}
+
+.template-text {
+  padding-bottom: 8px;
+  font-size: calc(1.4rem * var(--text-scale));
+}
+
+.slot-wrap {
+  display: inline-grid;
+  gap: 4px;
+  justify-items: center;
+}
+
+.slot-label {
+  font-size: var(--fs-small);
+  color: var(--ink-soft);
+}
+
+.slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 96px;
+  min-height: 56px;
+  padding: 2px;
+  border: 3px dashed var(--slate);
+  border-radius: var(--radius-small);
+}
+
+.slot-card {
+  min-width: 150px;
+  min-height: 150px;
+}
+
+.slot-filled {
+  border-style: solid;
+  border-color: var(--line);
+}
+
+.bank {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  min-height: 76px;
+  padding: 14px 18px;
+  background: var(--page-shade);
+  border-radius: var(--radius);
+}
+
+.bank-empty {
+  color: var(--ink-soft);
+}
+
+.token {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 8px 18px;
+  background: var(--accent-soft);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius-small);
+  font-size: calc(1.3rem * var(--text-scale));
+  font-weight: 700;
+}
+
+.token:hover:not(:disabled) {
+  background: #cfe0e2;
+}
+
+.token-locked {
+  background: var(--done-soft);
+  border-color: var(--done);
+}
+
+.token-cards {
+  flex-direction: column;
+  gap: 6px;
+  width: 150px;
+  min-height: 150px;
+  font-size: var(--fs-small);
+  font-weight: 400;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .template {
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .template-cards {
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .template-text {
+    font-size: calc(1.15rem * var(--text-scale));
+  }
+
+  .slot {
+    min-width: 72px;
+  }
+
+  .slot-card {
+    min-width: 88px;
+    min-height: 118px;
+  }
+
+  .token {
+    padding: 8px 14px;
+    font-size: calc(1.15rem * var(--text-scale));
+  }
+
+  .token-cards {
+    width: 88px;
+    min-height: 118px;
+    padding: 6px;
+    font-size: 0.72rem;
+  }
+
+  .token-cards .picture-md {
+    font-size: 2.1rem;
+  }
+
+  .bank {
+    gap: 8px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  .template-cards {
+    padding: 8px;
+    gap: 6px;
+  }
+
+  .slot-card {
+    min-width: 82px;
+    min-height: 112px;
+  }
+
+  .token-cards {
+    width: 82px;
+    min-height: 112px;
+    font-size: 0.68rem;
+  }
+}

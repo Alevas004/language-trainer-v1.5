@@ -1,0 +1,221 @@
+/* ---------- Hoja izquierda: Señor Loro ---------- */
+.side {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  text-align: center;
+}
+
+.side-chapter {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+}
+
+.side-caption {
+  margin: 0;
+  font-family: var(--font-title);
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.side-companion {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  width: 100%;
+}
+
+.companion-btn {
+  width: min(230px, 100%);
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: var(--radius-small);
+}
+
+.companion-btn svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.side-quiet {
+  margin: 0;
+  max-width: 220px;
+  font-size: var(--fs-small);
+  color: var(--ink-soft);
+}
+
+/* En la hoja izquierda el globo queda debajo de Loro y su colita apunta hacia arriba */
+.side .hint-bubble {
+  width: 100%;
+  max-width: none;
+  text-align: left;
+}
+
+.side .hint-bubble::before {
+  left: 50%;
+  top: -11px;
+  bottom: auto;
+  margin-left: -9px;
+  border-bottom: none;
+  border-left: 2px solid var(--line);
+  border-top: 2px solid var(--line);
+}
+
+/* ---------- Hoja derecha: la actividad ---------- */
+.game {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+
+.game-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-right: 60px; /* deja libre el marcapáginas */
+}
+
+.game-bar-nav,
+.game-bar-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.game-bar .btn[aria-pressed="true"] {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.title-numeral {
+  display: none;
+  color: var(--ribbon);
+}
+
+.game-title {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: var(--fs-heading);
+  line-height: 1.2;
+}
+
+.game-body {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ---------- Pantallas angostas: Loro pasa a una barra fija abajo ---------- */
+@media (max-width: 919px) {
+  .book-pages-left-last > .book-page-left {
+    position: sticky;
+    bottom: 0;
+    z-index: 20;
+    padding: 8px 10px;
+    border-radius: 12px 12px 6px 6px;
+    box-shadow: 0 -6px 16px rgb(40 48 54 / 0.18);
+    border-top: 1px solid var(--line);
+  }
+
+  .book-pages-left-last > .book-page-left::before {
+    display: none;
+  }
+
+  .side {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10px;
+    text-align: left;
+  }
+
+  .side-chapter {
+    display: none;
+  }
+
+  .side-companion {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .companion-btn {
+    flex: none;
+    width: 68px;
+  }
+
+  .side .hint-bubble {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 10px;
+    gap: 8px;
+  }
+
+  .side .hint-bubble p {
+    font-size: 0.95rem;
+    line-height: 1.35;
+  }
+
+  .side .hint-bubble .speak-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .side .hint-bubble::before {
+    left: -11px;
+    top: auto;
+    bottom: 20px;
+    margin-left: 0;
+    border-top: none;
+    border-left: 2px solid var(--line);
+    border-bottom: 2px solid var(--line);
+  }
+
+  .side-quiet {
+    max-width: none;
+    font-size: 0.9rem;
+  }
+
+  .game-bar {
+    padding-right: 0;
+  }
+
+  .title-numeral {
+    display: inline;
+  }
+
+  .game-bar .btn {
+    min-height: 44px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .game-bar .btn {
+    padding: 6px 9px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Tablets en vertical: más espacio, Señor Loro un poco más grande */
+@media (min-width: 600px) and (max-width: 919px) {
+  .companion-btn {
+    width: 104px;
+  }
+
+  .side .hint-bubble p {
+    font-size: 1.05rem;
+  }
+
+  .book-pages-left-last > .book-page-left {
+    padding: 10px 16px;
+  }
+}

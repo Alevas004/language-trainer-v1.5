@@ -1,0 +1,33 @@
+.wand {
+  --x: -100px;
+  --y: -100px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: var(--wand-size);
+  height: var(--wand-size);
+  pointer-events: none;
+  opacity: 0;
+  /* la estrella está en el 14 % de la figura: ahí cae el punto de clic */
+  transform: translate(
+    calc(var(--x) - var(--wand-size) * 0.14),
+    calc(var(--y) - var(--wand-size) * 0.14)
+  );
+  transform-origin: 14% 14%;
+  will-change: transform;
+}
+
+.wand-visible {
+  opacity: 1;
+}
+
+/* Al hacer clic, la varita se inclina un poco */
+.wand-pressed svg {
+  transform: rotate(-10deg) scale(0.92);
+  transform-origin: 14% 14%;
+}
+
+.wand svg {
+  transition: transform 0.08s;
+}

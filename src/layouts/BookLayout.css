@@ -1,0 +1,161 @@
+.desk {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: clamp(8px, 2.4vw, 32px);
+}
+
+.book {
+  width: min(1120px, 100%);
+}
+
+/* Tapa de tela con costura */
+.book-cover {
+  position: relative;
+  padding: 14px;
+  background: linear-gradient(160deg, var(--cover), var(--cover-dark));
+  border-radius: 18px;
+  box-shadow:
+    0 22px 44px rgb(30 40 48 / 0.32),
+    0 2px 0 rgb(255 255 255 / 0.14) inset;
+}
+
+.book-cover::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 2px dashed var(--stitch);
+  border-radius: 14px;
+  pointer-events: none;
+}
+
+/* Las dos hojas, con el canto de las páginas debajo */
+.book-pages {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--left-col, 1fr) 1fr;
+  min-height: min(700px, calc(100dvh - 110px));
+  background: var(--page);
+  border-radius: 8px;
+  box-shadow:
+    0 1px 0 #e9e4d9,
+    0 2px 0 #d6cfc0,
+    0 3px 0 #ebe6db,
+    0 4px 0 #cdc5b5;
+}
+
+.book-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(22px, 3.6vw, 44px);
+  background-color: var(--page);
+  background-image: var(--paper-grain);
+}
+
+/* Filete fino alrededor del texto */
+.book-page::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgb(120 105 80 / 0.2);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+/* El lomo: las hojas se oscurecen un poco hacia el centro */
+.book-page-left {
+  border-radius: 8px 0 0 8px;
+  background-image:
+    linear-gradient(to right, transparent 78%, rgb(70 58 36 / 0.12)),
+    var(--paper-grain);
+}
+
+.book-page-right {
+  border-radius: 0 8px 8px 0;
+  border-left: 1px solid rgb(120 105 80 / 0.28);
+  background-image:
+    linear-gradient(to left, transparent 90%, rgb(70 58 36 / 0.07)),
+    linear-gradient(to right, rgb(70 58 36 / 0.1), transparent 8%),
+    var(--paper-grain);
+}
+
+/* Cinta marcapáginas con el número del capítulo */
+.ribbon {
+  position: absolute;
+  top: 0;
+  right: clamp(22px, 5vw, 52px);
+  z-index: 2;
+  display: grid;
+  place-items: start center;
+  width: 34px;
+  height: 66px;
+  padding-top: 10px;
+  background: var(--ribbon);
+  color: #fff;
+  font-family: var(--font-title);
+  font-size: 1.05rem;
+  font-weight: 700;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
+  filter: drop-shadow(0 2px 2px rgb(0 0 0 / 0.2));
+}
+
+/* Un fundido corto al cambiar de página */
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+}
+
+.fade-in {
+  animation: page-in 0.32s ease-out;
+}
+
+/* ---------- Una sola hoja en pantallas angostas ---------- */
+@media (max-width: 919px) {
+  .book-cover {
+    padding: 8px;
+    border-radius: 14px;
+  }
+
+  .book-cover::before {
+    inset: 3px;
+    border-width: 1.5px;
+    border-radius: 11px;
+  }
+
+  .book-pages {
+    grid-template-columns: 1fr;
+    min-height: calc(100dvh - 40px);
+    grid-template-rows: auto 1fr;
+  }
+
+  .book-page {
+    padding: 18px 16px;
+  }
+
+  .book-page::before {
+    inset: 6px;
+  }
+
+  .book-page-left,
+  .book-page-right {
+    border-radius: 6px;
+    border-left: none;
+    background-image: var(--paper-grain);
+  }
+
+  .book-pages-left-last {
+    grid-template-rows: 1fr auto;
+  }
+
+  .book-pages-left-last .book-page-left {
+    order: 2;
+  }
+
+  .ribbon {
+    display: none;
+  }
+}

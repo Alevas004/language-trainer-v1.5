@@ -1,0 +1,29 @@
+.hint-bubble {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 460px;
+  padding: 14px 18px;
+  background: var(--page-shade);
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.hint-bubble p {
+  margin: 0;
+}
+
+/* Colita del globo, apunta hacia Señor Loro (a la izquierda) */
+.hint-bubble::before {
+  content: "";
+  position: absolute;
+  left: -11px;
+  bottom: 22px;
+  width: 18px;
+  height: 18px;
+  background: var(--page-shade);
+  border-left: 2px solid var(--line);
+  border-bottom: 2px solid var(--line);
+  transform: rotate(45deg);
+}

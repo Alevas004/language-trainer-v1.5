@@ -1,0 +1,182 @@
+/* ---------- Portada (hoja izquierda) ---------- */
+.cover {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  text-align: center;
+}
+
+.cover-title {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+}
+
+.cover h1 {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: calc(2.7rem * var(--text-scale));
+  line-height: 1.08;
+}
+
+.cover-sub {
+  margin: 0;
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: calc(1.2rem * var(--text-scale));
+  color: var(--ink-soft);
+}
+
+.cover-profile {
+  margin: 4px 0 0;
+  padding: 4px 16px;
+  background: var(--page-shade);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: var(--fs-small);
+}
+
+.cover-actions {
+  margin-top: 8px;
+}
+
+/* Estrellitas de adorno, lejos del texto */
+.sparkle {
+  position: absolute;
+  background: var(--line);
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+  pointer-events: none;
+}
+
+.sparkle-a { top: 4%; left: 12%; width: 18px; height: 18px; }
+.sparkle-b { top: 12%; right: 10%; width: 12px; height: 12px; }
+.sparkle-c { bottom: 8%; left: 18%; width: 10px; height: 10px; }
+
+/* ---------- Índice (hoja derecha) ---------- */
+.index {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.index-head {
+  padding-right: 64px; /* deja libre la cinta */
+}
+
+.index-head h2 {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: var(--fs-title);
+  font-style: italic;
+  line-height: 1.1;
+}
+
+.index-head p {
+  margin: 2px 0 0;
+  color: var(--ink-soft);
+}
+
+.index-group {
+  display: grid;
+  gap: 10px;
+}
+
+.index-group h3 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: var(--fs-base);
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.index-group h3::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.cover-footer {
+  margin-top: 32px;
+  font-size: 9px;
+  color: rgb(40, 40, 40);
+  text-align: center;
+}
+/* ---------- Pantallas angostas: la portada se vuelve una franja ---------- */
+@media (max-width: 919px) {
+  .cover {
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 14px;
+    text-align: left;
+  }
+
+  .cover-loro svg {
+    width: 84px;
+    height: auto;
+  }
+
+  .cover-title {
+    justify-items: start;
+    gap: 6px;
+  }
+
+  .cover h1 {
+    font-size: calc(1.7rem * var(--text-scale));
+  }
+
+  .cover .ornament {
+    margin-inline: 0;
+  }
+
+  .cover-sub {
+    font-size: var(--fs-small);
+  }
+
+  .cover-actions {
+    margin: 0 0 0 auto;
+    align-self: flex-start;
+  }
+
+  .cover-actions .btn {
+    min-height: 44px;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+
+  .cover-title {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .sparkle {
+    display: none;
+  }
+
+  .index-head {
+    padding-right: 0;
+  }
+
+  .index-head h2 {
+    font-size: calc(1.7rem * var(--text-scale));
+  }
+}
+
+@media (max-width: 440px) {
+  .cover-actions {
+    flex-basis: 100%;
+    margin: 0;
+  }
+
+  .cover-actions .btn {
+    width: 100%;
+  }
+}

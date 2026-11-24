@@ -1,0 +1,111 @@
+.level-select {
+  display: grid;
+  gap: 22px;
+}
+
+.level-select-head h2 {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: var(--fs-heading);
+}
+
+.level-select-head p {
+  margin: 4px 0 0;
+  color: var(--ink-soft);
+}
+
+.pages {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+
+/* Cada página del capítulo es una hoja con la esquina doblada */
+.page-card {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  justify-items: center;
+  min-height: 150px;
+  padding: 16px 8px 14px;
+  background: #fffdf9;
+  border: 2px solid var(--accent);
+  border-radius: 4px 4px 4px 4px;
+  box-shadow: 0 3px 0 rgb(79 127 134 / 0.28);
+  transition: background-color 0.15s, transform 0.08s;
+}
+
+.page-card::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(225deg, var(--page) 50%, #d8d1c1 50%);
+  border-bottom-left-radius: 6px;
+  box-shadow: -1px 1px 0 rgb(79 127 134 / 0.35);
+}
+
+.page-card:hover:not(:disabled) {
+  background: var(--accent-soft);
+}
+
+.page-card:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+.page-card:disabled {
+  background: var(--page-shade);
+  border: 2px dashed var(--slate);
+  box-shadow: none;
+  color: var(--ink-soft);
+  cursor: not-allowed;
+}
+
+.page-card:disabled::after {
+  display: none;
+}
+
+.page-done {
+  background: var(--done-soft);
+  border-color: var(--done);
+  box-shadow: 0 3px 0 rgb(126 156 134 / 0.4);
+}
+
+.page-number {
+  align-self: center;
+  font-family: var(--font-title);
+  font-size: calc(2.4rem * var(--text-scale));
+  font-weight: 700;
+  line-height: 1;
+}
+
+.page-state {
+  display: grid;
+  place-items: center;
+  min-height: 30px;
+  color: var(--slate);
+}
+
+.page-seal {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  background: var(--done);
+  color: #fff;
+  border-radius: 50%;
+}
+
+@media (max-width: 600px) {
+  .pages {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .page-card {
+    min-height: 120px;
+  }
+}

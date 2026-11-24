@@ -1,0 +1,24 @@
+.rules-screen {
+  display: grid;
+  gap: 28px;
+}
+
+.play-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.play-actions .btn {
+  font-size: var(--fs-base);
+}
+
+@media (max-width: 600px) {
+  .play-actions {
+    flex-direction: column;
+  }
+
+  .play-actions .btn {
+    width: 100%;
+  }
+}

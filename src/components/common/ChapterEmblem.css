@@ -1,0 +1,9 @@
+.emblem {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  background: var(--tint);
+  color: var(--tone);
+  border: 2px solid color-mix(in srgb, var(--tone) 35%, transparent);
+  border-radius: 50%;
+}

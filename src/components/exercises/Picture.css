@@ -1,0 +1,26 @@
+.picture {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 1.6em;
+  padding: 0.1em 0.25em;
+  background: var(--page-shade);
+  border-radius: 999px;
+  font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
+  line-height: 1.2;
+  /* Colores menos saturados para no robar atención */
+  filter: saturate(0.6);
+}
+
+.picture-sm {
+  font-size: 1.6rem;
+}
+
+.picture-md {
+  font-size: clamp(2.3rem, 9vw, 3rem);
+}
+
+.picture-lg {
+  font-size: clamp(3.2rem, 13vw, 4.5rem);
+}

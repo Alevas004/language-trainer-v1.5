@@ -1,0 +1,21 @@
+.speak-btn {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: var(--target-min);
+  height: var(--target-min);
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  transition: background-color 0.15s;
+}
+
+.speak-btn:hover {
+  background: #cfe0e2;
+}
+
+.speak-btn.is-speaking {
+  background: var(--accent);
+  color: #fff;
+}
